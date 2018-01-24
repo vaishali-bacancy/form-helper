@@ -1,0 +1,13 @@
+<%= form_tag(update_description_book_path(@book), method: :post) do  %>
+	<%= text_field_tag "book[description]", @book.description %>
+	<%= select_tag :name, options_for_select(["Abc", "BFADS", "asd"], "asd") %>
+	<%= time_zone_select(:person, :time_zone) %>
+	<%= date_field :name, Date.today, prefix: :start_date, min: (Date.today - 18.years), max: (Date.today + 20.years) %>
+	<%= submit_tag%>
+<%end%>
+
+<%= form_for [:api, :v1, @book] do |f|  %>
+	<%= f.text_field :description %>
+	<%= time_zone_select(:person, :time_zone) %>
+	<%= f.submit "Update" %>
+<%end%>
